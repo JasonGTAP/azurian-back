@@ -9,9 +9,10 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 
 class ProductoControllerTest {
@@ -46,4 +47,42 @@ class ProductoControllerTest {
         assertEquals(producto2, productosObtenidos.get(1));
         System.out.println("Pase sin ERROR al implementar la prueba");
     }
+
+
+
+    @Test
+    void obtenerProductos_listaVacia() {
+        // Configuración
+        List<Producto> productosVacios = Collections.emptyList();
+        when(productoService.listarProductos()).thenReturn(productosVacios);
+
+        // Ejecución
+        List<Producto> productosObtenidos = productoController.obtenerProductos();
+
+        // Verificación
+        assertTrue(productosObtenidos.isEmpty());
+        System.out.println("La prueba de lista vacía pasó sin errores.");
+    }
+
+    @Test
+    void obtenerProductos_productoInexistente() {
+        // Configuración
+        Producto productoInexistente = new Producto(3, "Producto Inexistente", 15.0, 150);
+        List<Producto> productos = Arrays.asList(
+                new Producto(1, "Producto 1", 10.0, 100),
+                new Producto(2, "Producto 2", 20.0, 200)
+        );
+        when(productoService.listarProductos()).thenReturn(productos);
+
+        // Ejecución
+        List<Producto> productosObtenidos = productoController.obtenerProductos();
+
+        // Verificación
+        assertEquals(2, productosObtenidos.size());
+        assertFalse(productosObtenidos.contains(productoInexistente));
+        System.out.println("La prueba de producto inexistente pasó sin errores.");
+    }
+
+
+
 }
