@@ -37,5 +37,7 @@ Ejecuta el siguiente comando para construir y ejecutar el proyecto:
 
 mvn spring-boot:run
 
+mvn spring-boot:test
+
 Acceder a la Aplicación:
 Una vez que la aplicación se haya iniciado correctamente, puedes acceder a ella en tu navegador web mediante la URL (http://localhost:8080/Azurian-app/v1/productos)
