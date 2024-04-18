@@ -28,7 +28,7 @@ Selecciona el archivo pom.xml y haz clic en "Open".
 Configuración de la Base de Datos:
 Asegúrate de tener una base de datos configurada. configurar base de datos compatible (MySQL)
 
-se sbjunts script de base de datos completa utilizada
+se abjunta script de base de datos completa utilizada
 
 Actualiza las propiedades de configuración de la base de datos en el archivo application.properties o application.yml según tus necesidades.
 
